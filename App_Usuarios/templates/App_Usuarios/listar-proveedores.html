@@ -1,0 +1,14 @@
+{% extends "home.html" %}
+
+{% block title %}<title>Listar Proveedores</title>{% endblock %}
+
+{% block content %}
+
+<h2>Listado Proveedores</h2>
+    {% for proveedor in proveedores %}
+        <li>{{ proveedor.nombre }}, {{ proveedor.apellido }}, {{ proveedor.email }}, {{ proveedor.telefono }}, {{ proveedor.servicio_proveedor }} </li>
+    {% empty %}
+        <li>No hay proveedores disponibles.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
