@@ -1,0 +1,14 @@
+{% extends "home.html" %}
+
+{% block title %}<title>Listar Productos</title>{% endblock %}
+
+{% block content %}
+
+<h2>Listado Productos</h2>
+    {% for producto in productos %}
+        <li>{{ producto.nombre }}</li>
+    {% empty %}
+        <li>No hay productos disponibles.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

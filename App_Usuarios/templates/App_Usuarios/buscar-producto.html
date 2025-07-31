@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+
+{% block title %}<title>Buscar Productos</title>{% endblock %}
+
+{% block content %}
+
+<h2>Buscar Productos</h2>
+<form method="GET" action="{% url 'buscar_productos' %}">
+    <input type="text" name="nombre" placeholder="Buscar productos..." required>
+    <button type="submit">Buscar</button>
+<ul>
+
+    {% for producto in productos %}
+        <li>{{ producto.nombre }}</li>
+    {% empty %}
+        <li>No hay productos disponibles.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

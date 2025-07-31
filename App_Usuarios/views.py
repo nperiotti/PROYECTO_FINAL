@@ -23,10 +23,10 @@ def crear_cliente(request):
                 direccion=form.cleaned_data['direccion']
             )
             cliente.save()
-            return redirect('listar_cliente')
+            return render(request, 'App_Usuarios/crear_cliente.html', {"form": form})
 
     form = ClienteForm()
-    return redirect('listar_clientes')
+    return render(request, 'App_Usuarios/crear_cliente.html', {"form": form})
 
 def crear_proveedor(request):
     if request.method == 'POST':
@@ -41,7 +41,7 @@ def crear_proveedor(request):
                 servicio_proveedor=form.cleaned_data['servicio_proveedor']
             )
             proveedor.save()
-            return redirect('listar_proveedores')
+            return render(request, 'App_Usuarios/crear_proveedor.html', {"form": form})
 
     form = ProveedorForm()
     return render(request, 'App_Usuarios/crear_proveedor.html', {"form": form})
@@ -57,7 +57,7 @@ def crear_producto(request):
                 fecha_ingreso=form.cleaned_data['fecha_ingreso']
             )
             producto.save()
-            return redirect('listar_productos')
+            return render(request, 'App_Usuarios/crear_producto.html', {"form": form})
 
     form = ProductoForm()
     return render(request, 'App_Usuarios/crear_producto.html', {"form": form})

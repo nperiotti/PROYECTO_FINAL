@@ -6,7 +6,7 @@
 
 <h2>Listado Clientes</h2>
     {% for cliente in clientes %}
-        <li>{{ cliente.nombre }}, {{ cliente.apellido }}, {{ cliente.email }}, {{ cliente.telefono }}, {{ cliente.direccion }}</li>
+        <li>{{ cliente.nombre }}</li>
     {% empty %}
         <li>No hay clientes disponibles.</li>
     {% endfor %}
