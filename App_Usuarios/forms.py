@@ -8,8 +8,7 @@ class ClienteForm(forms.Form):
     fecha_de_nacimiento = forms.DateField(label='Fecha de Nacimiento')
     telefono = forms.IntegerField(label='Teléfono', required=False)
     direccion = forms.CharField(max_length=200, label='Dirección', required=False)
-    telefono = forms.IntegerField(label='Teléfono')
-    direccion = forms.CharField(max_length=200, label='Dirección') 
+  
 
 class ProveedorForm(forms.Form):
     nombre = forms.CharField(max_length=100, label='Nombre')

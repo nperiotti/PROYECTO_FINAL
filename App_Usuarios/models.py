@@ -6,7 +6,7 @@ class Cliente(models.Model):
     apellido = models.CharField(max_length=100)
     dni= models.CharField(max_length=10, unique=True)
     email = models.EmailField(unique=True)
-    fecha_nacimiento = models.DateField()
+    fecha_de_nacimiento = models.DateField()
     telefono = models.CharField(max_length=15, blank=True, null=True)
     direccion = models.CharField(max_length=200, null=True, blank=True)
 

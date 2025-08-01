@@ -7,7 +7,7 @@ from .forms import ClienteForm, ProveedorForm, ProductoForm
 # Crear vista para la página de inicio
 
 def home(request):
-    return render(request, 'App_Usuarios/home.html')
+    return render(request, 'home.html')
 
 # Crear cliente, proveedor y producto
 
@@ -18,15 +18,18 @@ def crear_cliente(request):
             cliente = Cliente(
                 nombre=form.cleaned_data['nombre'],
                 apellido=form.cleaned_data['apellido'],
+                dni=form.cleaned_data['dni'],
                 email=form.cleaned_data['email'],
+                fecha_de_nacimiento=form.cleaned_data['fecha_de_nacimiento'],
                 telefono=form.cleaned_data['telefono'],
                 direccion=form.cleaned_data['direccion']
             )
             cliente.save()
-            return render(request, 'App_Usuarios/crear_cliente.html', {"form": form})
+            form = ClienteForm()  # Reset, devuelve el formulario vacío después de guardar
+            return render(request, 'App_Usuarios/crear-cliente.html', {"form": form})
 
     form = ClienteForm()
-    return render(request, 'App_Usuarios/crear_cliente.html', {"form": form})
+    return render(request, 'App_Usuarios/crear-cliente.html', {"form": form})
 
 def crear_proveedor(request):
     if request.method == 'POST':
@@ -41,10 +44,11 @@ def crear_proveedor(request):
                 servicio_proveedor=form.cleaned_data['servicio_proveedor']
             )
             proveedor.save()
-            return render(request, 'App_Usuarios/crear_proveedor.html', {"form": form})
+            form = ProveedorForm()  # Reset, devuelve el formulario vacío después de guardar
+            return render(request, 'App_Usuarios/crear-proveedor.html', {"form": form})
 
     form = ProveedorForm()
-    return render(request, 'App_Usuarios/crear_proveedor.html', {"form": form})
+    return render(request, 'App_Usuarios/crear-proveedor.html', {"form": form})
 
 def crear_producto(request):
     if request.method == 'POST':
@@ -57,26 +61,27 @@ def crear_producto(request):
                 fecha_ingreso=form.cleaned_data['fecha_ingreso']
             )
             producto.save()
-            return render(request, 'App_Usuarios/crear_producto.html', {"form": form})
+            form = ProductoForm() # Reset, devuelve el formulario vacío después de guardar
+            return render(request, 'App_Usuarios/crear-producto.html', {"form": form})
 
     form = ProductoForm()
-    return render(request, 'App_Usuarios/crear_producto.html', {"form": form})
+    return render(request, 'App_Usuarios/crear-producto.html', {"form": form})
  
         
 # Listar clientes, proveedores y productos
 
 def listar_clientes(request):
     clientes = Cliente.objects.all()
-    return render(request, 'App_Usuarios/listar_clientes.html', {"clientes": clientes})
+    return render(request, 'App_Usuarios/listar-clientes.html', {"clientes": clientes})
 
 
 def listar_proveedores(request):
     proveedores = Proveedor.objects.all()
-    return render(request, 'App_Usuarios/listar_proveedores.html', {"proveedores": proveedores})
+    return render(request, 'App_Usuarios/listar-proveedores.html', {"proveedores": proveedores})
 
 def listar_productos(request):
     productos = Producto.objects.all()
-    return render(request, 'App_Usuarios/listar_productos.html', {"productos": productos})
+    return render(request, 'App_Usuarios/listar-productos.html', {"productos": productos})
 
 
 def buscar_proveedor(request):
@@ -85,7 +90,7 @@ def buscar_proveedor(request):
         apellido = request.GET.get('apellido', 'nombre')
         servicio_proveedor = request.GET.get('servicio_proveedor', 'servicio_proveedor')
         proveedores = Proveedor.objects.filter(nombre__icontains=nombre)
-        return render(request, 'App_Usuarios/listar_proveedores.html', {"apellido": apellido, "nombre": nombre, "servicio_proveedor": servicio_proveedor})
+        return render(request, 'App_Usuarios/listar-proveedores.html', {"apellido": apellido, "nombre": nombre, "servicio_proveedor": servicio_proveedor})
 
 
 # Create your views here.
