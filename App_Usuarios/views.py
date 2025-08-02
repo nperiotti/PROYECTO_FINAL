@@ -25,7 +25,6 @@ def crear_cliente(request):
                 direccion=form.cleaned_data['direccion']
             )
             cliente.save()
-            form = ClienteForm()  # Reset, devuelve el formulario vacío después de guardar
             return render(request, 'App_Usuarios/crear-cliente.html', {"form": form})
 
     form = ClienteForm()
@@ -61,7 +60,6 @@ def crear_producto(request):
                 fecha_ingreso=form.cleaned_data['fecha_ingreso']
             )
             producto.save()
-            form = ProductoForm() # Reset, devuelve el formulario vacío después de guardar
             return render(request, 'App_Usuarios/crear-producto.html', {"form": form})
 
     form = ProductoForm()
@@ -90,7 +88,19 @@ def buscar_proveedor(request):
         apellido = request.GET.get('apellido', 'nombre')
         servicio_proveedor = request.GET.get('servicio_proveedor', 'servicio_proveedor')
         proveedores = Proveedor.objects.filter(nombre__icontains=nombre)
-        return render(request, 'App_Usuarios/listar-proveedores.html', {"apellido": apellido, "nombre": nombre, "servicio_proveedor": servicio_proveedor})
+        return render(request, 'App_Usuarios/buscar-proveedores.html', {"apellido": apellido, "nombre": nombre, "servicio_proveedor": servicio_proveedor})
 
+def buscar_productos(request):
+    if request.method == 'GET':
+        nombre = request.GET.get('nombre', 'nombre')
+        productos = Producto.objects.filter(nombre__icontains=nombre)
+        return render(request, 'App_Usuarios/buscar-productos.html', {"productos": productos})
+    
+def buscar_cliente(request):
+    if request.method == 'GET':
+        nombre = request.GET.get('nombre', 'nombre')
+        apellido = request.GET.get('apellido', 'apellido')
+        clientes = Cliente.objects.filter(nombre__icontains=nombre)
+        return render(request, 'App_Usuarios/buscar-cliente.html', {"clientes": clientes, "apellido": apellido, "nombre": nombre})
 
 # Create your views here.
