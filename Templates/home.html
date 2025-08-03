@@ -11,23 +11,31 @@
     <header style="width:100%; background:rgba(37,117,252,0.85); padding:24px 0; box-shadow:0 2px 8px rgba(37,117,252,0.10);">
         <h1 style="color:#fff; text-align:center; font-size:2.2rem; letter-spacing:2px; margin:0;">Proyecto Final - Gestion Logistica Deposito - Python</h1>
     </header>
-        <main style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:70vh;">
-    {% block content %}
+    <main style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:70vh;">
+        {% block content %}
         <section style="background:rgba(255,255,255,0.97); border-radius:28px; box-shadow:0 8px 32px rgba(0,0,0,0.12); padding:56px 40px; text-align:center; max-width:480px;">
             <h2 style="color:#2575fc; font-size:2rem; margin-bottom:20px;">¡Bienvenido!</h2>
             <p style="color:#444; font-size:1.15rem; margin-bottom:32px;">
                 Esta es la página principal de tu proyecto final de gestión logística.<br>
                 Falta personalizarla pero de a poco va a ir tomando forma.<br>
             </p>
-            <a href="https://www.djangoproject.com/" target="_blank"
-               style="display:inline-block; padding:14px 32px; background:#2575fc; color:#fff; border-radius:10px; text-decoration:none; font-weight:bold; font-size:1.1rem; box-shadow:0 2px 8px rgba(37,117,252,0.15); transition:background 0.2s;">
-                Conoce Django
+            
             </a>
+
+            <!-- Aquí los botones para asignar URLs -->
+            <div style="margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">
+                <a href="http://127.0.0.1:8000/crear-cliente/" style="padding:10px 20px; border-radius:8px; background:#4CAF50; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Crear Cliente</a>
+                <a href="http://127.0.0.1:8000/crear-proveedor/" style="padding:10px 20px; border-radius:8px; background:#2196F3; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Crear Proveedor</a>
+                <a href="http://127.0.0.1:8000/crear-producto/" style="padding:10px 20px; border-radius:8px; background:#FF5722; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Crear Producto</a>
+                <a href="http://127.0.0.1:8000/listar-clientes/" style="padding:10px 20px; border-radius:8px; background:#9C27B0; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Listar Clientes</a>
+                <a href="http://127.0.0.1:8000/listar-proveedores/" style="padding:10px 20px; border-radius:8px; background:#00BCD4; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Listar Proveedores</a>
+                <a href="http://127.0.0.1:8000/listar-productos/" style="padding:10px 20px; border-radius:8px; background:#FFC107; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Listar Productos</a>
+                <a href="http://127.0.0.1:8000/clientes/buscar/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Buscar Cliente</a>
+                <a href="http://127.0.0.1:8000/proveedores/buscar/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Buscar Proveedor</a>
+                <a href="http://127.0.0.1:8000/productos/buscar/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Buscar Producto</a>
+            </div>
         </section>
+        {% endblock %}
     </main>
-    {% endblock content %}
     <footer style="width:100%; background:rgba(37,117,252,0.85); color:#fff; text-align:center; padding:18px 0; font-size:1rem; position:fixed; left:0; bottom:0;">
-        &copy; {{ year|default:"2025" }} - Hecho con <span style="color:#e25555;">&#10084;</span> en Django
-    </footer>
-</body>
-</html>
+        &copy; {{ year|default:"2025" }} - Hecho con <span style="color:#e25555;">&#10084

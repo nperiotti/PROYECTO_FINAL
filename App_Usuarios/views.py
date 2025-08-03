@@ -26,6 +26,7 @@ def crear_cliente(request):
             )
             cliente.save()
             return render(request, 'App_Usuarios/crear-cliente.html', {"form": form})
+            
 
     form = ClienteForm()
     return render(request, 'App_Usuarios/crear-cliente.html', {"form": form})
@@ -43,7 +44,6 @@ def crear_proveedor(request):
                 servicio_proveedor=form.cleaned_data['servicio_proveedor']
             )
             proveedor.save()
-            form = ProveedorForm()  # Reset, devuelve el formulario vacío después de guardar
             return render(request, 'App_Usuarios/crear-proveedor.html', {"form": form})
 
     form = ProveedorForm()
