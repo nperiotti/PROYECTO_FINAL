@@ -9,5 +9,6 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Crear Producto</button>
+    <a href="{% url 'home' %}"><button type="button">Volver Menu Principal</button></a>
 </form>
 {% endblock content %}

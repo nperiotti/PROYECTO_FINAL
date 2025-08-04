@@ -4,9 +4,9 @@ from django.db import models
 class Cliente(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
-    dni= models.CharField(max_length=10)
-    email = models.EmailField()
-    fecha_de_nacimiento = models.DateField()
+    dni= models.CharField(max_length=10, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    fecha_de_nacimiento = models.DateField(null=True, blank=True)
     telefono = models.CharField(max_length=15, blank=True, null=True)
     direccion = models.CharField(max_length=200, null=True, blank=True)
 
@@ -16,8 +16,8 @@ class Cliente(models.Model):
 class Proveedor (models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
-    dni= models.CharField(max_length=10)
-    email = models.EmailField(unique=False)
+    dni= models.CharField(max_length=10, null=True, blank=True)
+    email = models.EmailField(unique=False, null=True, blank=True)
     telefono = models.CharField(max_length=15, blank=True, null=True)
     servicio_proveedor = models.CharField(max_length=100)
 

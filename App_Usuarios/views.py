@@ -25,6 +25,7 @@ def crear_cliente(request):
                 direccion=form.cleaned_data['direccion']
             )
             cliente.save()
+            form = ClienteForm()  # Reciclo el formulario para que esté vacío después de guardar
             return render(request, 'App_Usuarios/crear-cliente.html', {"form": form})
             
 
@@ -44,6 +45,7 @@ def crear_proveedor(request):
                 servicio_proveedor=form.cleaned_data['servicio_proveedor']
             )
             proveedor.save()
+            form = ProveedorForm()  # Reciclo el formulario para que esté vacío después de guardar
             return render(request, 'App_Usuarios/crear-proveedor.html', {"form": form})
 
     form = ProveedorForm()
@@ -60,6 +62,7 @@ def crear_producto(request):
                 fecha_ingreso=form.cleaned_data['fecha_ingreso']
             )
             producto.save()
+            form = ProductoForm()  # Reciclo el formulario para que esté vacío después de guardar
             return render(request, 'App_Usuarios/crear-producto.html', {"form": form})
 
     form = ProductoForm()
@@ -82,17 +85,32 @@ def listar_productos(request):
     return render(request, 'App_Usuarios/listar-productos.html', {"productos": productos})
 
 
+def buscar_cliente(request):
+    if request.method == 'GET':
+        nombre = request.GET.get('nombre', 'nombre')
+        apellido = request.GET.get('apellido', 'apellido')
+        clientes = Cliente.objects.filter(nombre__icontains=nombre)
+        return render(request, 'App_Usuarios/buscar-cliente.html', {"clientes": clientes, "apellido": apellido, "nombre": nombre})
+    
 def buscar_proveedor(request):
     if request.method == 'GET':
-        nombre = request.GET.get('nombre', 'apellido')
-        apellido = request.GET.get('apellido', 'nombre')
+        nombre = request.GET.get('nombre', 'nombre')
+        apellido = request.GET.get('apellido', 'apellido')
         servicio_proveedor = request.GET.get('servicio_proveedor', 'servicio_proveedor')
-        proveedores = Proveedor.objects.filter(nombre__icontains=nombre)
-        return render(request, 'App_Usuarios/buscar-proveedores.html', {"apellido": apellido, "nombre": nombre, "servicio_proveedor": servicio_proveedor})
+
+        proveedores = Proveedor.objects.all()
+        if nombre:
+            proveedores = proveedores.filter(nombre__icontains=nombre)
+        if apellido:
+            proveedores = proveedores.filter(apellido__icontains=apellido)
+        if servicio_proveedor:
+            proveedores = proveedores.filter(servicio_proveedor__icontains=servicio_proveedor)
+
+        return render(request, 'App_Usuarios/buscar-proveedores.html', {"proveedores": proveedores, "apellido": apellido, "nombre": nombre, "servicio_proveedor": servicio_proveedor})
 
 def buscar_productos(request):
     if request.method == 'GET':
-        nombre = request.GET.get('nombre', 'nombre')
+        nombre = request.GET.get('nombre', '')
         productos = Producto.objects.filter(nombre__icontains=nombre)
         return render(request, 'App_Usuarios/buscar-productos.html', {"productos": productos})
     

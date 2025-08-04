@@ -10,5 +10,7 @@
     {% empty %}
         <li>No hay proveedores disponibles.</li>
     {% endfor %}
+    
 </ul>
+<a href="{% url 'home' %}"><button type="button">Volver Menu Principal</button></a>
 {% endblock content %}

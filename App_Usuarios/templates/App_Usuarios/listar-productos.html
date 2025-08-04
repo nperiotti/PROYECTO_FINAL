@@ -9,6 +9,8 @@
         <li>{{ producto.nombre }}</li>
     {% empty %}
         <li>No hay productos disponibles.</li>
-    {% endfor %}
+         {% endfor %}
+   
 </ul>
+<a href="{% url 'home' %}"><button type="button">Volver Menu Principal</button></a>
 {% endblock content %}
