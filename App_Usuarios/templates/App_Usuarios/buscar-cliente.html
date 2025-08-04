@@ -5,13 +5,13 @@
 {% block content %}
 
 <h2>Buscar Clientes</h2>
-<form method="GET" action="{% url 'buscar_cliente' %}">
+<form method="GET" action="{% url 'buscar-cliente' %}">
     <input type="text" name="nombre" placeholder="Buscar clientes..." required>
     <button type="submit">Buscar</button>
 <ul>
 
     {% for cliente in clientes %}
-        <li>{{ cliente.nombre }}</li>
+        <li>{{ cliente.nombre }} {{ cliente.apellido }} - {{ cliente.dni }} - {{ cliente.telefono }}</li>
     {% empty %}
         <li>No hay clientes disponibles.</li>
     {% endfor %}

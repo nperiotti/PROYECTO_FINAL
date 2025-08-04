@@ -94,11 +94,12 @@ def buscar_cliente(request):
     
 def buscar_proveedor(request):
     if request.method == 'GET':
-        nombre = request.GET.get('nombre', 'nombre')
-        apellido = request.GET.get('apellido', 'apellido')
-        servicio_proveedor = request.GET.get('servicio_proveedor', 'servicio_proveedor')
-
+        nombre = request.GET.get('nombre', '')
+        apellido = request.GET.get('apellido', '')
+        servicio_proveedor = request.GET.get('servicio_proveedor', '')
+                
         proveedores = Proveedor.objects.all()
+        
         if nombre:
             proveedores = proveedores.filter(nombre__icontains=nombre)
         if apellido:
@@ -106,7 +107,12 @@ def buscar_proveedor(request):
         if servicio_proveedor:
             proveedores = proveedores.filter(servicio_proveedor__icontains=servicio_proveedor)
 
-        return render(request, 'App_Usuarios/buscar-proveedores.html', {"proveedores": proveedores, "apellido": apellido, "nombre": nombre, "servicio_proveedor": servicio_proveedor})
+        return render(request, 'App_Usuarios/buscar-proveedores.html', {
+            "proveedores": proveedores, 
+            "apellido": apellido, 
+            "nombre": nombre, 
+            "servicio_proveedor": servicio_proveedor
+            })
 
 def buscar_productos(request):
     if request.method == 'GET':
