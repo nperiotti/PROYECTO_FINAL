@@ -1,0 +1,28 @@
+{% extends "home.html" %}
+
+{% block title %}Sobre mí{% endblock %}
+
+{% block content %}
+<!-- Contenedor centrado con estilo limpio y profesional -->
+<div style="max-width: 900px; margin: 50px auto; padding: 40px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+  
+  <!-- Título grande y sobrio -->
+  <h2 style="text-align: center; font-size: 2.8rem; color: #222; margin-bottom: 20px;">QUIÉN SOY</h2>
+  
+  <!-- Sección de descripción con fuente elegante y legible -->
+  <p style="font-size: 1.25rem; line-height: 1.8; color: #555; text-align: center; margin-bottom: 20px;">
+    Soy <strong style="color: #007bff;">Nelson Alberto Periotti</strong>, tengo 45 años y soy Licenciado en Relaciones Públicas e Institucionales.
+  </p>
+  
+  <p style="font-size: 1.25rem; line-height: 1.8; color: #555; text-align: center;">
+    Siempre me ha interesado el mundo de la programación y el desarrollo web. Por ello, decidí estudiar en <strong style="color: #28a745;">CoderHouse</strong>, plataforma de referencia para aprender nuevas habilidades en tecnología y desarrollo profesional.
+  </p>
+  
+  <!-- Botón de regreso a Menu Principal -->
+  <div style="margin-top: 40px; text-align: center;">
+    <a href="{% url 'home' %}" style="padding: 14px 30px; font-size: 1.2rem; font-weight: bold; background-color: #007bff; color: #fff; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background-color 0.3s, transform 0.2s;">
+      Volver al Menú Principal
+    </a>
+  </div>
+</div>
+{% endblock %}

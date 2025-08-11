@@ -1,4 +1,5 @@
 from django import forms
+from .models import Producto
 
 class ClienteForm(forms.Form):
     nombre = forms.CharField(max_length=100, label='Nombre')
@@ -20,10 +21,11 @@ class ProveedorForm(forms.Form):
     
          
     
-class ProductoForm(forms.Form):
-    nombre = forms.CharField(max_length=100, label='Nombre del Producto')
-    descripcion = forms.CharField(widget=forms.Textarea, label='Descripción')
-    stock = forms.IntegerField(label='Stock')
-    fecha_ingreso = forms.DateField(label='Fecha de Ingreso',  input_formats=['%d/%m/%Y'])
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ['nombre', 'descripcion', 'stock', 'fecha_ingreso']
+
+
     
     

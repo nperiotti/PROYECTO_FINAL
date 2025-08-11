@@ -7,9 +7,16 @@ path('crear-cliente/', views.crear_cliente, name='crear-cliente'),
 path("listar-clientes/", views.listar_clientes, name="listar-clientes"),
 path("crear-proveedor/", views.crear_proveedor, name="crear-proveedor"),
 path("listar-proveedores/", views.listar_proveedores, name="listar-proveedores"),
-path("crear-producto/", views.crear_producto, name="crear-producto"),
-path("listar-productos/", views.listar_productos, name="listar-productos"),
-path('productos/buscar/', views.buscar_productos, name='buscar-productos'),
 path('clientes/buscar/', views.buscar_cliente, name='buscar-cliente'),
 path('proveedores/buscar/',  views.buscar_proveedor, name='buscar-proveedores'),
+
+# Vistas basadas en clases para productos
+path("crear-producto/", views.ProductoCreateView.as_view(), name="crear-producto"),
+path("listar-productos/", views.ProductoListView.as_view(), name="listar-productos"),
+path('detalle-producto/<int:pk>/', views.ProductoDetailView.as_view(), name='detalle-producto'),
+path('editar-producto/<int:pk>/', views.ProductoUpdateView.as_view(), name='editar-producto'),
+path('eliminar-producto/<int:pk>/', views.ProductoDeleteView.as_view(), name='eliminar-producto'),
+path('productos/buscar/', views.buscar_productos, name='buscar-productos'),
+path('about/', views.about, name='about'),
 ]
+

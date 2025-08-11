@@ -14,14 +14,16 @@
     <main style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:70vh;">
         {% block content %}
         <section style="background:rgba(255,255,255,0.97); border-radius:28px; box-shadow:0 8px 32px rgba(0,0,0,0.12); padding:56px 40px; text-align:center; max-width:480px;">
-            <h2 style="color:#2575fc; font-size:2rem; margin-bottom:20px;">¡Bienvenido!</h2>
-            <p style="color:#444; font-size:1.15rem; margin-bottom:32px;">
-                Esta es la página principal de tu proyecto final de gestión logística.<br>
-                Falta personalizarla pero de a poco va a ir tomando forma.<br>
-            </p>
-            
-            </a>
-
+            <h2 style="color:#2575fc; font-size:2rem; margin-bottom:20px;">¡Bienvenido al Proyecto Final del Curso de Python!</h2>
+            <h2 style="color:#444; font-size:1.15rem; margin-bottom:32px;">Comision 83010 </h2>
+                Profesor: Miguel Rodenas<br>
+                Alumno: Nelson Alberto Periotti<br>
+                       
+<div style="margin-top:20px; display:flex; justify-content:center;">
+                <a href="http://127.0.0.1:8000/about/" style="padding:14px 28px; border-radius:10px; background:#ff5722; color:#fff; font-size:1.2rem; font-weight:bold; text-decoration:none; box-shadow:0 4px 8px rgba(0,0,0,0.2); transition:background 0.3s;">
+                    QUIEN SOY
+                </a>
+            </div>
             <!-- Aquí los botones para asignar URLs -->
             <div style="margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">
                 <a href="http://127.0.0.1:8000/crear-cliente/" style="padding:10px 20px; border-radius:8px; background:#4CAF50; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Crear Cliente</a>
@@ -33,9 +35,10 @@
                 <a href="http://127.0.0.1:8000/clientes/buscar/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Buscar Cliente</a>
                 <a href="http://127.0.0.1:8000/proveedores/buscar/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Buscar Proveedor</a>
                 <a href="http://127.0.0.1:8000/productos/buscar/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Buscar Producto</a>
+
+                
             </div>
         </section>
         {% endblock %}
     </main>
-    <footer style="width:100%; background:rgba(37,117,252,0.85); color:#fff; text-align:center; padding:18px 0; font-size:1rem; position:fixed; left:0; bottom:0;">
-        &copy; {{ year|default:"2025" }} - Hecho con <span style="color:#e25555;">&#10084
+    

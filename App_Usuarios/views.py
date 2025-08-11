@@ -2,12 +2,17 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Cliente, Proveedor, Producto
 from .forms import ClienteForm, ProveedorForm, ProductoForm
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView   
+from django.urls import reverse_lazy
 
 
 # Crear vista para la página de inicio
 
 def home(request):
     return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'App_Usuarios/about.html')
 
 # Crear cliente, proveedor y producto
 
@@ -51,23 +56,6 @@ def crear_proveedor(request):
     form = ProveedorForm()
     return render(request, 'App_Usuarios/crear-proveedor.html', {"form": form})
 
-def crear_producto(request):
-    if request.method == 'POST':
-        form = ProductoForm(request.POST)
-        if form.is_valid():
-            producto = Producto(
-                nombre=form.cleaned_data['nombre'],
-                descripcion=form.cleaned_data['descripcion'],
-                stock=form.cleaned_data['stock'],
-                fecha_ingreso=form.cleaned_data['fecha_ingreso']
-            )
-            producto.save()
-            form = ProductoForm()  # Reciclo el formulario para que esté vacío después de guardar
-            return render(request, 'App_Usuarios/crear-producto.html', {"form": form})
-
-    form = ProductoForm()
-    return render(request, 'App_Usuarios/crear-producto.html', {"form": form})
- 
         
 # Listar clientes, proveedores y productos
 
@@ -80,10 +68,43 @@ def listar_proveedores(request):
     proveedores = Proveedor.objects.all()
     return render(request, 'App_Usuarios/listar-proveedores.html', {"proveedores": proveedores})
 
-def listar_productos(request):
+#def listar_productos(request):
     productos = Producto.objects.all()
     return render(request, 'App_Usuarios/listar-productos.html', {"productos": productos})
 
+#Vistas basadas en clases para productos
+
+class ProductoCreateView(CreateView):
+    model = Producto
+    form_class = ProductoForm
+    template_name = 'App_Usuarios/crear-producto.html'
+    success_url = reverse_lazy('listar-productos')
+
+class ProductoListView(ListView):
+    model = Producto
+    template_name = 'App_Usuarios/listar-productos.html'
+    context_object_name = 'productos'
+
+class ProductoUpdateView(UpdateView):
+    model = Producto
+    form_class = ProductoForm
+    template_name = 'App_Usuarios/crear-producto.html'
+    success_url = reverse_lazy('listar-productos')
+
+class ProductoDetailView(DetailView):
+    model = Producto
+    template_name = 'App_Usuarios/detalle-producto.html'
+    context_object_name = 'producto'
+
+class ProductoDeleteView(DeleteView):
+    model = Producto
+    template_name = 'App_Usuarios/eliminar-producto.html'
+    success_url = reverse_lazy('listar-productos')
+
+
+
+
+# Buscar clientes, proveedores y productos
 
 def buscar_cliente(request):
     if request.method == 'GET':
