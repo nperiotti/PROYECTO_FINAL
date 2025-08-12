@@ -23,9 +23,25 @@
                 <a href="http://127.0.0.1:8000/about/" style="padding:14px 28px; border-radius:10px; background:#ff5722; color:#fff; font-size:1.2rem; font-weight:bold; text-decoration:none; box-shadow:0 4px 8px rgba(0,0,0,0.2); transition:background 0.3s;">
                     QUIEN SOY
                 </a>
+                
+            </div>
+            <h2 style="color:#666; font-size:1rem; margin-top:20px;">Para comenzar, por favor inicia sesión o regístrate.</h2>
+            <div style="margin-top:20px; display:flex; justify-content:center; gap:10px;">
+                <a href="http://127.0.0.1:8000/App_LogIn/login/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Login</a>
+                <a href="http://127.0.0.1:8000/Appregister/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Registro</a>
+                
+                <div>
+                    <form action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; border:none; cursor:pointer;">Logout</button>
+                    </form>
+                </div>
             </div>
             <!-- Aquí los botones para asignar URLs -->
-            <div style="margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">
+            <h2 style="color:#666; font-size:1rem; margin-bottom:10px;">Hola! Sos el usuario: {{ user.username }}</h2>
+            <h2 style="color:#666; font-size:1rem; margin-bottom:10px;">Acciones disponibles:</h2>
+            <div style="margin-top:20px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">
+                
                 <a href="http://127.0.0.1:8000/crear-cliente/" style="padding:10px 20px; border-radius:8px; background:#4CAF50; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Crear Cliente</a>
                 <a href="http://127.0.0.1:8000/crear-proveedor/" style="padding:10px 20px; border-radius:8px; background:#2196F3; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Crear Proveedor</a>
                 <a href="http://127.0.0.1:8000/crear-producto/" style="padding:10px 20px; border-radius:8px; background:#FF5722; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Crear Producto</a>
@@ -35,8 +51,8 @@
                 <a href="http://127.0.0.1:8000/clientes/buscar/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Buscar Cliente</a>
                 <a href="http://127.0.0.1:8000/proveedores/buscar/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Buscar Proveedor</a>
                 <a href="http://127.0.0.1:8000/productos/buscar/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Buscar Producto</a>
+               
 
-                
             </div>
         </section>
         {% endblock %}
