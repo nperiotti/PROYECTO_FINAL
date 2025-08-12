@@ -28,8 +28,8 @@
             <h2 style="color:#666; font-size:1rem; margin-top:20px;">Para comenzar, por favor inicia sesión o regístrate.</h2>
             <div style="margin-top:20px; display:flex; justify-content:center; gap:10px;">
                 <a href="http://127.0.0.1:8000/App_LogIn/login/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Login</a>
-                <a href="http://127.0.0.1:8000/Appregister/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Registro</a>
-                
+                <a href="http://127.0.0.1:8000/App_LogIn/register/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Registro</a>
+
                 <div>
                     <form action="{% url 'logout' %}" method="POST">
                         {% csrf_token %}
