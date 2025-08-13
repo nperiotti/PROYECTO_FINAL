@@ -27,15 +27,19 @@
             </div>
             <h2 style="color:#666; font-size:1rem; margin-top:20px;">Para comenzar, por favor inicia sesión o regístrate.</h2>
             <div style="margin-top:20px; display:flex; justify-content:center; gap:10px;">
-                <a href="http://127.0.0.1:8000/App_LogIn/login/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Login</a>
-                <a href="http://127.0.0.1:8000/App_LogIn/register/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Registro</a>
-
+                
+            {% if user.is_authenticated %}
                 <div>
                     <form action="{% url 'logout' %}" method="POST">
                         {% csrf_token %}
                         <button type="submit" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; border:none; cursor:pointer;">Logout</button>
                     </form>
                 </div>
+            {% else %}
+                <a href="http://127.0.0.1:8000/App_LogIn/login/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Login</a>
+                <a href="http://127.0.0.1:8000/App_LogIn/register/" style="padding:10px 20px; border-radius:8px; background:#FF9800; color:#fff; font-size:1rem; text-decoration:none; display:inline-block;">Registro</a>
+            {% endif %}
+            
             </div>
             <!-- Aquí los botones para asignar URLs -->
             <h2 style="color:#666; font-size:1rem; margin-bottom:10px;">Hola! Sos el usuario: {{ user.username }}</h2>
