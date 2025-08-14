@@ -3,29 +3,36 @@
 {% block title %}<title>Buscar Productos</title>{% endblock %}
 
 {% block content %}
-<h2 style="text-align: center; margin-top: 20px;">Buscar Productos</h2>
+<h2 style="text-align: center; margin-bottom: 20px; font-family: 'Arial', sans-serif;">Buscar Productos</h2>
 
-<form method="GET" action="{% url 'buscar-productos' %}" style="display: flex; justify-content: center; margin: 20px auto; max-width: 600px;">
-    <input type="text" name="nombre" placeholder="Buscar productos..." required style="padding: 10px; font-size: 16px; width: 70%; border-radius: 4px 0 0 4px; border: 1px solid #ccc;">
-    <button type="submit" style="padding: 10px 20px; font-size: 16px; border: none; background-color: #4CAF50; color: white; border-radius: 0 4px 4px 0; cursor: pointer;">Buscar</button>
+<form method="GET" action="{% url 'buscar-productos' %}" style="display: flex; justify-content: center; margin-bottom: 30px;">
+    <input type="text" name="nombre" placeholder="Buscar productos..." required
+        style="width: 300px; padding: 10px 20px; border-radius: 25px; border: 1px solid #ccc; outline: none; font-size: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: box-shadow 0.3s;">
+    <button type="submit" style="margin-left: 10px; padding: 10px 20px; border: none; border-radius: 25px; background-color: #007BFF; color: white; font-size: 16px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: background-color 0.3s;">
+        Buscar
+    </button>
 </form>
 
-<ul style="list-style: none; padding: 0; max-width: 600px; margin: 20px auto;">
-    {% for producto in productos %}
-        <li style="background-color: #fff; margin-bottom: 10px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 18px;">{{ producto.nombre }}</span>
-            <a href="{% url 'detalle-producto' producto.pk %}">
-                <button style="background-color: #2196F3; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">Ver Detalle</button>
-            </a>
-        </li>
-    {% empty %}
-        <li style="text-align: center; padding: 20px; font-size: 16px;">No hay productos disponibles.</li>
-    {% endfor %}
-</ul>
+<div style="max-width: 600px; margin: 0 auto;">
+    <ul style="list-style: none; padding: 0;">
+        {% for producto in productos %}
+            <li style="background-color: #f0f0f0; margin-bottom: 10px; padding: 15px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: 'Arial', sans-serif; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <strong style="font-size: 18px;">{{ producto.nombre }}</strong><br>
+                    <span style="font-size: 14px; color: #555;">{{ producto.descripcion }}</span>
+                </div>
+            </li>
+        {% empty %}
+            <li style="text-align: center; padding: 20px; font-size: 16px; color: #888;">No hay productos disponibles.</li>
+        {% endfor %}
+    </ul>
+</div>
 
 <div style="text-align: center; margin-top: 30px;">
     <a href="{% url 'home' %}">
-        <button style="background-color: #555; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px;">Volver al Menú Principal</button>
+        <button style="padding: 10px 20px; border-radius: 25px; background-color: #6c757d; color: white; border: none; cursor: pointer; font-size: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: background-color 0.3s;">
+            Volver al Menú Principal
+        </button>
     </a>
 </div>
 {% endblock %}

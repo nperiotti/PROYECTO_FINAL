@@ -4,7 +4,10 @@ from .models import Cliente, Proveedor, Producto
 from .forms import ClienteForm, ProveedorForm, ProductoForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView   
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
+# VISTAS BASADAS EN FUNCIONES
 
 # Crear vista para la página de inicio
 
@@ -16,6 +19,7 @@ def about(request):
 
 # Crear cliente, proveedor y producto
 
+@login_required
 def crear_cliente(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
@@ -37,6 +41,7 @@ def crear_cliente(request):
     form = ClienteForm()
     return render(request, 'App_Usuarios/crear-cliente.html', {"form": form})
 
+@login_required
 def crear_proveedor(request):
     if request.method == 'POST':
         form = ProveedorForm(request.POST)
@@ -59,60 +64,27 @@ def crear_proveedor(request):
         
 # Listar clientes, proveedores y productos
 
+@login_required
 def listar_clientes(request):
     clientes = Cliente.objects.all()
     return render(request, 'App_Usuarios/listar-clientes.html', {"clientes": clientes})
 
-
+@login_required
 def listar_proveedores(request):
     proveedores = Proveedor.objects.all()
     return render(request, 'App_Usuarios/listar-proveedores.html', {"proveedores": proveedores})
 
-#def listar_productos(request):
-    productos = Producto.objects.all()
-    return render(request, 'App_Usuarios/listar-productos.html', {"productos": productos})
-
-#Vistas basadas en clases para productos
-
-class ProductoCreateView(CreateView):
-    model = Producto
-    form_class = ProductoForm
-    template_name = 'App_Usuarios/crear-producto.html'
-    success_url = reverse_lazy('listar-productos')
-
-class ProductoListView(ListView):
-    model = Producto
-    template_name = 'App_Usuarios/listar-productos.html'
-    context_object_name = 'productos'
-
-class ProductoUpdateView(UpdateView):
-    model = Producto
-    form_class = ProductoForm
-    template_name = 'App_Usuarios/crear-producto.html'
-    success_url = reverse_lazy('listar-productos')
-
-class ProductoDetailView(DetailView):
-    model = Producto
-    template_name = 'App_Usuarios/detalle-producto.html'
-    context_object_name = 'producto'
-
-class ProductoDeleteView(DeleteView):
-    model = Producto
-    template_name = 'App_Usuarios/eliminar-producto.html'
-    success_url = reverse_lazy('listar-productos')
-
-
-
 
 # Buscar clientes, proveedores y productos
-
+@login_required
 def buscar_cliente(request):
     if request.method == 'GET':
         nombre = request.GET.get('nombre', 'nombre')
         apellido = request.GET.get('apellido', 'apellido')
         clientes = Cliente.objects.filter(nombre__icontains=nombre)
         return render(request, 'App_Usuarios/buscar-cliente.html', {"clientes": clientes, "apellido": apellido, "nombre": nombre})
-    
+
+@login_required
 def buscar_proveedor(request):
     if request.method == 'GET':
         nombre = request.GET.get('nombre', '')
@@ -135,17 +107,71 @@ def buscar_proveedor(request):
             "servicio_proveedor": servicio_proveedor
             })
 
+@login_required
 def buscar_productos(request):
     if request.method == 'GET':
         nombre = request.GET.get('nombre', '')
         productos = Producto.objects.filter(nombre__icontains=nombre)
         return render(request, 'App_Usuarios/buscar-productos.html', {"productos": productos})
-    
+
+@login_required
 def buscar_cliente(request):
     if request.method == 'GET':
         nombre = request.GET.get('nombre', 'nombre')
         apellido = request.GET.get('apellido', 'apellido')
         clientes = Cliente.objects.filter(nombre__icontains=nombre)
         return render(request, 'App_Usuarios/buscar-cliente.html', {"clientes": clientes, "apellido": apellido, "nombre": nombre})
+
+
+
+#VISTAS BASADAS EN CLASES
+
+class ProductoCreateView(LoginRequiredMixin, CreateView):
+    model = Producto
+    form_class = ProductoForm
+    template_name = 'App_Usuarios/crear-producto.html'
+    success_url = reverse_lazy('listar-productos')
+
+class ProductoListView(ListView):
+    model = Producto
+    template_name = 'App_Usuarios/listar-productos.html'
+    context_object_name = 'productos'
+
+class ProductoUpdateView(LoginRequiredMixin, UpdateView):
+    model = Producto
+    form_class = ProductoForm
+    template_name = 'App_Usuarios/crear-producto.html'
+    success_url = reverse_lazy('listar-productos')
+
+class ProductoDetailView(LoginRequiredMixin, DetailView):
+    model = Producto
+    template_name = 'App_Usuarios/detalle-producto.html'
+    context_object_name = 'producto'
+
+class ProductoDeleteView(LoginRequiredMixin, DeleteView):
+    model = Producto
+    template_name = 'App_Usuarios/eliminar-producto.html'
+    success_url = reverse_lazy('listar-productos')
+
+class ClienteDetailView(LoginRequiredMixin, DetailView):
+    model = Cliente
+    template_name = 'App_Usuarios/detalle-cliente.html'
+    context_object_name = 'cliente'
+
+class ClienteDeleteView(LoginRequiredMixin, DeleteView):
+    model = Cliente
+    template_name = 'App_Usuarios/eliminar-cliente.html'
+    success_url = reverse_lazy('listar-clientes')
+
+class ProveedorDetailView(LoginRequiredMixin, DetailView):
+    model = Proveedor
+    template_name = 'App_Usuarios/detalle-proveedor.html'
+    context_object_name = 'proveedor'
+
+class ProveedorDeleteView(LoginRequiredMixin, DeleteView):
+    model = Proveedor
+    template_name = 'App_Usuarios/eliminar-proveedor.html'
+    success_url = reverse_lazy('listar-proveedores')
+
 
 # Create your views here.

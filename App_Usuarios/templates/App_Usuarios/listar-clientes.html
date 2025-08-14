@@ -1,18 +1,30 @@
 {% extends "home.html" %}
 
-{% block title %}<title>Listar Clientes</title>{% endblock %}
+{% block title %}<title>Listado de Clientes</title>{% endblock %}
 
 {% block content %}
+<h2 style="text-align: center; margin-top: 20px;">Listado de Clientes</h2>
 
-<h2>Listado Clientes</h2>
+<ul style="list-style: none; padding: 0; max-width: 600px; margin: 20px auto;">
     {% for cliente in clientes %}
-        <li>{{ cliente.nombre }}</li>
+        <li style="background-color: #f9f9f9; margin-bottom: 10px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 18px;">{{ cliente.nombre }} {{ cliente.apellido }} - {{ cliente.telefono }}</span>
+            <div style="display: flex; gap: 10px;">
+                <a href="{% url 'detalle-cliente' cliente.pk %}">
+                    <button style="background-color: #4CAF50; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">Ver Detalle</button>
+                </a>
+                
+                <a href="{% url 'eliminar-cliente' cliente.pk %}">
+                    <button style="background-color: #f44336; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">Eliminar</button>
+                </a>
+            </div>
+        </li>
     {% empty %}
-        <li>No hay clientes disponibles.</li>
+        <li style="text-align: center; padding: 20px; font-size: 16px;">No hay clientes disponibles.</li>
     {% endfor %}
-    
 </ul>
 
-<a href="{% url 'home' %}"><button type="button">Volver Menu Principal</button></a>
-{% endblock content %}
-
+<div style="text-align: center; margin-top: 30px;">
+    <a href="{% url 'home' %}"><button style="background-color: #555; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px;">Volver al Menú Principal</button></a>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "home.html" %}
+
+{% block content %}
+<h1 style="text-align: center; margin-top: 30px; color: #333;">Detalle del Cliente</h1>
+
+<div style="max-width: 700px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <p style="font-size: 18px; margin-bottom: 10px;"><strong>Nombre:</strong> {{ cliente.nombre }}</p>
+    <p style="font-size: 18px; margin-bottom: 10px;"><strong>Apellido:</strong> {{ cliente.apellido }}</p>
+    <p style="font-size: 18px; margin-bottom: 10px;"><strong>DNI:</strong> {{ cliente.dni }}</p>
+    <p style="font-size: 18px; margin-bottom: 10px;"><strong>Email:</strong> {{ cliente.email }}</p>
+    <p style="font-size: 18px; margin-bottom: 10px;"><strong>Teléfono:</strong> {{ cliente.telefono }}</p>
+    <p style="font-size: 18px; margin-bottom: 10px;"><strong>Dirección:</strong> {{ cliente.direccion }}</p>
+</div>
+
+<div style="text-align: center; margin-top: 30px;">
+    <a href="{% url 'home' %}">
+        <button style="background-color: #555; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; margin: 10px;">Volver al Menú Principal</button>
+    </a>
+    <a href="{% url 'listar-clientes' %}">
+        <button style="background-color: #007BFF; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; margin: 10px;">Volver a Listar Clientes</button>
+    </a>
+    
+</div>
+{% endblock %}

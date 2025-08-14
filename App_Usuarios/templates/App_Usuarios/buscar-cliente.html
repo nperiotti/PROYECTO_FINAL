@@ -3,18 +3,37 @@
 {% block title %}<title>Buscar Clientes</title>{% endblock %}
 
 {% block content %}
+<h2 style="text-align: center; margin-bottom: 20px; font-family: 'Arial', sans-serif;">Buscar Clientes</h2>
 
-<h2>Buscar Clientes</h2>
-<form method="GET" action="{% url 'buscar-cliente' %}">
-    <input type="text" name="nombre" placeholder="Buscar clientes..." required>
-    <button type="submit">Buscar</button>
-<ul>
+<form method="GET" action="{% url 'buscar-cliente' %}" style="display: flex; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; gap: 10px;">
+    <input type="text" name="nombre" placeholder="Buscar clientes..." required
+        style="width: 300px; padding: 10px 20px; border-radius: 25px; border: 1px solid #ccc; outline: none; font-size: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: box-shadow 0.3s;">
+    <button type="submit"
+        style="padding: 10px 20px; border: none; border-radius: 25px; background-color: #007BFF; color: white; font-size: 16px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: background-color 0.3s;">
+        Buscar
+    </button>
+</form>
 
-    {% for cliente in clientes %}
-        <li>{{ cliente.nombre }} {{ cliente.apellido }} - {{ cliente.dni }} - {{ cliente.telefono }}</li>
-    {% empty %}
-        <li>No hay clientes disponibles.</li>
-    {% endfor %}
-</ul>
- <a href="{% url 'home' %}"><button type="button">Volver Menu Principal</button></a>
-{% endblock content %}
+<div style="max-width: 700px; margin: 0 auto;">
+    <ul style="list-style: none; padding: 0;">
+        {% for cliente in clientes %}
+            <li style="background-color: #f0f0f0; margin-bottom: 10px; padding: 15px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: 'Arial', sans-serif; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <strong style="font-size: 18px;">{{ cliente.nombre }} {{ cliente.apellido }}</strong><br>
+                    <span style="font-size: 14px; color: #555;">DNI: {{ cliente.dni }} | Tel: {{ cliente.telefono }}</span>
+                </div>
+            </li>
+        {% empty %}
+            <li style="text-align: center; padding: 20px; font-size: 16px; color: #888;">No hay clientes disponibles.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div style="text-align: center; margin-top: 30px;">
+    <a href="{% url 'home' %}">
+        <button style="padding: 10px 20px; border-radius: 25px; background-color: #6c757d; color: white; border: none; cursor: pointer; font-size: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: background-color 0.3s;">
+            Volver al Menú Principal
+        </button>
+    </a>
+</div>
+{% endblock %}

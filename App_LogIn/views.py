@@ -7,6 +7,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from .forms import RegisterForm, AvatarForm, ProfileUpdateForm
 from .models import Avatar
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class UserRegisterView(CreateView):
     model = User
@@ -31,7 +32,7 @@ class UserLoginView(LoginView):
 class UserLogoutView(LogoutView):
     next_page = reverse_lazy('home')
 
-class ProfileView(DetailView):
+class ProfileView(LoginRequiredMixin, DetailView):
     model = User
     template_name = 'App_LogIn/profile.html'
     context_object_name = 'user'
@@ -39,7 +40,7 @@ class ProfileView(DetailView):
     def get_object(self):
         return self.request.user
 
-class AvatarUpdateView(UpdateView):
+class AvatarUpdateView(LoginRequiredMixin, UpdateView):
     model = Avatar
     form_class = AvatarForm
     template_name = 'App_LogIn/avatar.html'
@@ -49,7 +50,7 @@ class AvatarUpdateView(UpdateView):
         avatar, created = Avatar.objects.get_or_create(user=self.request.user)
         return avatar
 
-class ProfileUpdateView(View):
+class ProfileUpdateView(LoginRequiredMixin,View):
     template_name = 'App_LogIn/edit_profile.html'
     success_url = reverse_lazy('profile')
 
