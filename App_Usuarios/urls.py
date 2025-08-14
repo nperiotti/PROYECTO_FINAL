@@ -9,7 +9,8 @@ path("crear-proveedor/", views.crear_proveedor, name="crear-proveedor"),
 path("listar-proveedores/", views.listar_proveedores, name="listar-proveedores"),
 path('clientes/buscar/', views.buscar_cliente, name='buscar-cliente'),
 path('proveedores/buscar/',  views.buscar_proveedor, name='buscar-proveedores'),
-
+path('editar-cliente/<int:pk>/', views.crear_cliente, name='editar-cliente'),
+path('editar-proveedor/<int:pk>/', views.crear_proveedor, name='editar-proveedor'),
 
 # Vistas basadas en clases para productos
 path("crear-producto/", views.ProductoCreateView.as_view(), name="crear-producto"),
@@ -23,5 +24,6 @@ path('detalle-cliente/<int:pk>/', views.ClienteDetailView.as_view(), name='detal
 path('eliminar-cliente/<int:pk>/', views.ClienteDeleteView.as_view(), name='eliminar-cliente'),
 path('detalle-proveedor/<int:pk>/', views.ProveedorDetailView.as_view(), name='detalle-proveedor'),
 path('eliminar-proveedor/<int:pk>/', views.ProveedorDeleteView.as_view(), name='eliminar-proveedor'),
+
 ]
 
