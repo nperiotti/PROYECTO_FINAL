@@ -8,7 +8,7 @@
 <ul style="list-style: none; padding: 0; max-width: 600px; margin: 20px auto;">
     {% for cliente in clientes %}
         <li style="background-color: #f9f9f9; margin-bottom: 10px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 18px;">{{ cliente.nombre }}</span>
+            <span style="font-size: 18px;">{{ cliente.nombre }} {{ cliente.apellido }} - DNI: {{ cliente.dni }}</span>
             <div style="display: flex; gap: 10px;">
                 <a href="{% url 'detalle-cliente' cliente.pk %}">
                     <button style="background-color: #4CAF50; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">Ver Detalle</button>

@@ -1,25 +1,15 @@
 from django import forms
-from .models import Producto
+from .models import Producto, Cliente, Proveedor
 
-class ClienteForm(forms.Form):
-    nombre = forms.CharField(max_length=100, label='Nombre')
-    apellido = forms.CharField(max_length=100, label='Apellido')
-    dni = forms.CharField(max_length=10, label='DNI')
-    email = forms.EmailField(label='Email', required=False)
-    fecha_de_nacimiento = forms.DateField(label='Fecha de Nacimiento', input_formats=['%d/%m/%Y'],required=False)
-    telefono = forms.CharField(max_length=15, label='Teléfono', required=False)
-    direccion = forms.CharField(max_length=200, label='Dirección', required=False)
-  
+class ClienteForm(forms.ModelForm):
+    class Meta:
+        model = Cliente
+        fields = ['nombre', 'apellido', 'dni', 'email', 'fecha_de_nacimiento', 'telefono', 'direccion']
 
-class ProveedorForm(forms.Form):
-    nombre = forms.CharField(max_length=100, label='Nombre')
-    apellido = forms.CharField(max_length=100, label='Apellido')
-    dni = forms.CharField(max_length=10, label='DNI')
-    email = forms.EmailField(label='Email', required=False)
-    telefono = forms.CharField(max_length=15, label='Teléfono', required=False)
-    servicio_proveedor = forms.CharField(max_length=100, label='Servicio')
-    
-         
+class ProveedorForm(forms.ModelForm):
+    class Meta:
+        model = Proveedor
+        fields = ['nombre', 'apellido', 'dni', 'email', 'telefono', 'servicio_proveedor']
     
 class ProductoForm(forms.ModelForm):
     class Meta:

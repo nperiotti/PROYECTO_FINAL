@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 # VISTAS BASADAS EN FUNCIONES
 
 # Crear vista para la página de inicio
@@ -31,7 +32,7 @@ def crear_cliente(request):
                 email=form.cleaned_data['email'],
                 fecha_de_nacimiento=form.cleaned_data['fecha_de_nacimiento'],
                 telefono=form.cleaned_data['telefono'],
-                direccion=form.cleaned_data['direccion']
+                direccion=form.cleaned_data['direccion'],
             )
             cliente.save()
             form = ClienteForm()  # Reciclo el formulario para que esté vacío después de guardar
@@ -55,13 +56,47 @@ def crear_proveedor(request):
                 servicio_proveedor=form.cleaned_data['servicio_proveedor']
             )
             proveedor.save()
-            form = ProveedorForm()  # Reciclo el formulario para que esté vacío después de guardar
+            return redirect('listar-proveedores')
+        else:
             return render(request, 'App_Usuarios/crear-proveedor.html', {"form": form})
-
+        
     form = ProveedorForm()
     return render(request, 'App_Usuarios/crear-proveedor.html', {"form": form})
 
-        
+# Editar Clientes y Proveedores
+
+@login_required
+def editar_cliente(request, pk):
+    try:
+        cliente = Cliente.objects.get(pk=pk)
+    except Cliente.DoesNotExist:
+        return redirect('listar-clientes')  
+    
+    if request.method == 'POST':
+        form = ClienteForm(request.POST, instance=cliente)
+        if form.is_valid():
+            form.save()
+            return redirect('detalle-cliente', pk=cliente.pk)
+    else:
+        form = ClienteForm(instance=cliente)
+    return render(request, 'App_Usuarios/editar-cliente.html', {"form": form})
+
+@login_required
+def editar_proveedor(request, pk):
+    try:
+        proveedor = Proveedor.objects.get(pk=pk)
+    except Proveedor.DoesNotExist:
+        return redirect('listar-proveedores')  
+
+    if request.method == 'POST':
+        form = ProveedorForm(request.POST, instance=proveedor)
+        if form.is_valid():
+            form.save()
+            return redirect('detalle-proveedor', pk=proveedor.pk)
+    else:
+        form = ProveedorForm(instance=proveedor)
+    return render(request, 'App_Usuarios/editar-proveedor.html', {"form": form})
+
 # Listar clientes, proveedores y productos
 
 @login_required
@@ -76,6 +111,7 @@ def listar_proveedores(request):
 
 
 # Buscar clientes, proveedores y productos
+
 @login_required
 def buscar_cliente(request):
     if request.method == 'GET':
@@ -114,17 +150,10 @@ def buscar_productos(request):
         productos = Producto.objects.filter(nombre__icontains=nombre)
         return render(request, 'App_Usuarios/buscar-productos.html', {"productos": productos})
 
-@login_required
-def buscar_cliente(request):
-    if request.method == 'GET':
-        nombre = request.GET.get('nombre', 'nombre')
-        apellido = request.GET.get('apellido', 'apellido')
-        clientes = Cliente.objects.filter(nombre__icontains=nombre)
-        return render(request, 'App_Usuarios/buscar-cliente.html', {"clientes": clientes, "apellido": apellido, "nombre": nombre})
-
-
 
 #VISTAS BASADAS EN CLASES
+
+# Crear, Listar, Editar, Detalle y Eliminar Producto
 
 class ProductoCreateView(LoginRequiredMixin, CreateView):
     model = Producto
@@ -153,6 +182,8 @@ class ProductoDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'App_Usuarios/eliminar-producto.html'
     success_url = reverse_lazy('listar-productos')
 
+# Detalle y Eliminacion de Clientes
+
 class ClienteDetailView(LoginRequiredMixin, DetailView):
     model = Cliente
     template_name = 'App_Usuarios/detalle-cliente.html'
@@ -162,6 +193,8 @@ class ClienteDeleteView(LoginRequiredMixin, DeleteView):
     model = Cliente
     template_name = 'App_Usuarios/eliminar-cliente.html'
     success_url = reverse_lazy('listar-clientes')
+
+# Detalle y Eliminacion de Proveedores
 
 class ProveedorDetailView(LoginRequiredMixin, DetailView):
     model = Proveedor
