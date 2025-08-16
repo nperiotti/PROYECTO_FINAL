@@ -15,3 +15,7 @@ Para hacer funcionar este Proyecto se deben ejecutar una vez descargado de GitHu
 
 6 - Ejecutar el Proyecto: python manage.py runserver
 
+SE ADJUNTA LINK A VIDEO EXPLICATIVO:
+
+https://drive.google.com/file/d/1A5vD4nrWqGBkOWvT3XhzVvr1t0-VVBrE/view?usp=sharing
+

@@ -115,10 +115,20 @@ def listar_proveedores(request):
 @login_required
 def buscar_cliente(request):
     if request.method == 'GET':
-        nombre = request.GET.get('nombre', 'nombre')
-        apellido = request.GET.get('apellido', 'apellido')
-        clientes = Cliente.objects.filter(nombre__icontains=nombre)
-        return render(request, 'App_Usuarios/buscar-cliente.html', {"clientes": clientes, "apellido": apellido, "nombre": nombre})
+        nombre = request.GET.get('nombre', '')
+        apellido = request.GET.get('apellido', '')
+
+        clientes = Cliente.objects.all()
+        if nombre:
+            clientes = clientes.filter(nombre__icontains=nombre)
+        if apellido:
+            clientes = clientes.filter(apellido__icontains=apellido)
+            
+        return render(request, 'App_Usuarios/buscar-cliente.html', {
+            "clientes": clientes, 
+            "apellido": apellido, 
+            "nombre": nombre
+            })
 
 @login_required
 def buscar_proveedor(request):
@@ -161,7 +171,7 @@ class ProductoCreateView(LoginRequiredMixin, CreateView):
     template_name = 'App_Usuarios/crear-producto.html'
     success_url = reverse_lazy('listar-productos')
 
-class ProductoListView(ListView):
+class ProductoListView(LoginRequiredMixin, ListView):
     model = Producto
     template_name = 'App_Usuarios/listar-productos.html'
     context_object_name = 'productos'

@@ -1,12 +1,24 @@
 {% extends "home.html" %}
 {% block content %}
 
-  <h2>Registro de Usuario</h2>
-
-  <form method="POST">
+<div style="max-width: 500px; margin: 50px auto; padding: 30px; background-color: #f9f9f9; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: 'Arial', sans-serif;">
+  <h2 style="text-align: center; color: #333;">Registro de Usuario</h2>
+  
+  <form method="POST" style="margin-top: 20px;">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Registrarse</button>
+    <button type="submit" style="width: 100%; padding: 12px; margin-top: 15px; background-color: #4CAF50; color: white; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s;">
+      Registrarse
+    </button>
   </form>
-  
+
+  <div style="text-align: center; margin-top: 20px;">
+    <a href="{% url 'home' %}" style="text-decoration: none;">
+      <button style="background-color: #2196F3; color: white; padding: 10px 20px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; transition: background-color 0.3s;">
+        Volver al Menu Principal
+      </button>
+    </a>
+  </div>
+</div>
+
 {% endblock %}

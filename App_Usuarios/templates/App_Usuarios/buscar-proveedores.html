@@ -6,7 +6,7 @@
 <h2 style="text-align: center; margin-bottom: 20px; font-family: 'Arial', sans-serif;">Buscar Proveedores</h2>
 
 <form method="GET" action="{% url 'buscar-proveedores' %}" style="display: flex; justify-content: center; margin-bottom: 30px;">
-    <input type="text" name="nombre" placeholder="Buscar proveedores..." required
+    <input type="text" name="servicio_proveedor" placeholder="Buscar proveedores por servicio..." required
         style="width: 300px; padding: 10px 20px; border-radius: 25px; border: 1px solid #ccc; outline: none; font-size: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: box-shadow 0.3s;">
     <button type="submit" style="margin-left: 10px; padding: 10px 20px; border: none; border-radius: 25px; background-color: #007BFF; color: white; font-size: 16px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: background-color 0.3s;">
         Buscar
@@ -18,8 +18,8 @@
         {% for proveedor in proveedores %}
             <li style="background-color: #f0f0f0; margin-bottom: 10px; padding: 15px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-family: 'Arial', sans-serif; display: flex; justify-content: space-between; align-items: center;">
                 <div>
-                    <strong style="font-size: 18px;">{{ proveedor.nombre }} {{ proveedor.apellido }}</strong><br>
-                    <span style="font-size: 14px; color: #555;">{{ proveedor.servicio_proveedor }}</span>
+                    <strong style="font-size: 18px;">{{ proveedor.nombre }} {{ proveedor.apellido }} - {{proveedor.servicio_proveedor}}</strong><br>
+                   
                 </div>
             </li>
         {% empty %}
