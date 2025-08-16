@@ -1,0 +1,113 @@
+[33mcommit a35f87cef50438f50a84ccf5a5ad91f5cb1da09c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Fri Aug 15 01:30:14 2025 -0300
+
+    Corregi Errores y Complete README
+
+[33mcommit 114e691a877030937df2a02ee0b4ecd6b223b03d[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Thu Aug 14 16:41:19 2025 -0300
+
+    En proceso de correccion de Errores
+
+[33mcommit 88ebce6d0d0accbb7778429ab22f22a19af371f5[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Thu Aug 14 00:50:15 2025 -0300
+
+    Actualice Vistas
+
+[33mcommit 1e1ab952e7b2709c3d0350f95c54ca7e3a818ab8[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Tue Aug 12 23:28:20 2025 -0300
+
+    Agregamos Editor de Perfil
+
+[33mcommit 21c986c9db1f61e84145191e1ab2f48a3227acb0[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Tue Aug 12 00:35:40 2025 -0300
+
+    Solucionado el LogOut
+
+[33mcommit 1ba1f82f806bd1f34953264a5145c2062d56b6d0[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Tue Aug 12 00:19:54 2025 -0300
+
+    Agregado de LogIn y LogOut. Falta terminar LogOut
+
+[33mcommit 29786f3c50b5df361f24c78f28525c10dab28b91[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Mon Aug 11 00:34:10 2025 -0300
+
+    Creacion de Vistas basadas en Clases para Producto
+
+[33mcommit bae992bb41c6cc029e5f28b87ea408dcb285b208[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Mon Aug 4 20:40:07 2025 -0300
+
+    README Modificado
+
+[33mcommit e0e0ad61257f6f5884d6032d3dcd506f47f1292c[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Mon Aug 4 20:38:02 2025 -0300
+
+    Actualice Busquedas
+
+[33mcommit 5b5bca27085ce6c17639377c58c89a9d47fa2fcc[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Mon Aug 4 19:15:14 2025 -0300
+
+    Aclaracion en README
+
+[33mcommit 5fac0f9f9d1790967dd4216fb10d394b76b7ef7d[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Mon Aug 4 14:49:05 2025 -0300
+
+    Pude hacer que cargue la Base de Datos
+
+[33mcommit 9d531b58f3d77b4a7f60f9b80058816fdfde1675[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Sun Aug 3 16:14:10 2025 -0300
+
+    Aclaraciones en README sobre Errores del Proyecto
+
+[33mcommit 7a0a9043e7f8a43310c52f3504c9c0a9a2e0d760[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Sun Aug 3 16:12:12 2025 -0300
+
+    Actualice Home, y sigo revisando para entender por que no carga ase de Datos
+
+[33mcommit ce557d37dcf2a8abef1d178e3b7a27e7e946c1fa[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Sat Aug 2 15:22:16 2025 -0300
+
+    Agregue las plantillas de Busqueda y Resolvi Algunos Errores
+
+[33mcommit 75ea435aee135f464fafb1fb6e996cd37f530bfd[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Thu Jul 31 22:32:05 2025 -0300
+
+    Logre que funciones las Planillas. Falla Base de Datos
+
+[33mcommit 60473914436cb022947f6921bc9fba5a794e29d1[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Thu Jul 31 18:59:51 2025 -0300
+
+    Nueva Actualiacion, Agregue Home.html
+
+[33mcommit 512d9dc3a400bf06f9efce126b9b1bb555fafcd8[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Thu Jul 31 18:56:56 2025 -0300
+
+    Actualizacion de Entrega
+
+[33mcommit eacfe770ca3995c204cb95b769dc79f5e0cd730e[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Thu Jul 31 18:23:23 2025 -0300
+
+    2da Entrega de Proyecto
+
+[33mcommit 85a6667155483187deaf0d7b9493f22b3488e2ce[m
+Author: Nelson Periotti <nperiotti@gmail.com>
+Date:   Wed Jul 30 13:25:43 2025 -0300
+
+    Initial commit

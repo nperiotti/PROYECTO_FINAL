@@ -3,12 +3,138 @@
 {% block title %}<title>Crear Proveedor</title>{% endblock %}
 
 {% block content %}
-    <h2>Crear Proveedor</h2>
+<h2 class="titulo-seccion">Crear Proveedor</h2>
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar Proveedor</button>
-    <a href="{% url 'home' %}"><button type="button">Volver Menu Principal</button></a>
-</form>
-{% endblock content %}
+{% if mensaje_exito %}
+<div class="mensaje-exito">
+    <p>{{ mensaje_exito }}</p>
+</div>
+{% endif %}
+
+<div class="formulario-container">
+    <form action="" method="post" class="form-estilizado">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="botones">
+            <button type="submit" class="btn btn-primary">Crear Proveedor</button>
+            <a href="{% url 'home' %}">
+                <button type="button" class="btn btn-secondary">Volver al Menú Principal</button>
+            </a>
+        </div>
+    </form>
+</div>
+
+<style>
+/* Tipografía moderna y fondo suave */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Título estilizado */
+.titulo-seccion {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Contenedor del formulario con sombra y bordes redondeados */
+.formulario-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Mensaje de éxito estilizado */
+.mensaje-exito {
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #e8f5e9;
+    color: #388e3c;
+    max-width: 400px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Estilos para los campos del formulario */
+.form-estilizado p {
+    margin-bottom: 20px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+/* Estilo para los botones */
+.botones {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    min-width: 150px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Botón de volver con estilo transparencia y borde */
+button[type="button"] {
+    background-color: transparent;
+    border: 2px solid #6c757d;
+    color: #6c757d;
+}
+
+button[type="button"]:hover {
+    background-color: #6c757d;
+    color: #fff;
+}
+</style>
+{% endblock %}

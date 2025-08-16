@@ -6,6 +6,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 
 # VISTAS BASADAS EN FUNCIONES
@@ -37,7 +38,6 @@ def crear_cliente(request):
             cliente.save()
             form = ClienteForm()  # Reciclo el formulario para que esté vacío después de guardar
             return render(request, 'App_Usuarios/crear-cliente.html', {"form": form})
-            
 
     form = ClienteForm()
     return render(request, 'App_Usuarios/crear-cliente.html', {"form": form})
